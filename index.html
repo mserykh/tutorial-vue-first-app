@@ -7,9 +7,23 @@
 </head>
 <body>
     <div class="app">
-        <h1>Notes</h1>  
+        <h1>Notes</h1>
+        <div class="notes">
+            <nav>
+                <p v-if="!notes.length">No notes saved.</p>
+                <ul v-if="notes.length">
+                    <li v-for="note in notes">
+                        <button v-on:click="currentNote = note">{{note.title}}</button>
+                    </li>
+                </ul>
+            </nav>
+            <div v-if="currentNote" class="current-note">
+                <h2>{{currentNote.title}}</h2>
+                <p>{{currentNote.contents}}</p>
+            </div>
+        </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="main.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="app.js"></script>
 </body>
 </html>
